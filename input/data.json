@@ -1,0 +1,104 @@
+{
+  "header": {
+    "name": "SHAHKY YANDHANA PUTRA",
+    "contact": {
+      "location": "Yogyakarta, Indonesia", 
+      "email": "yandhanashahky@gmail.com",
+      "linkedin": {
+        "label": "linkedin.com/in/shahky",
+        "url": "https://www.linkedin.com/in/shahky-yandhana-putra"
+      },
+      "github": {
+        "label": "github.com/shahky",
+        "url": "https://github.com/Kysohee18"
+      }
+    }
+  },
+  "education": {
+    "institution": "UNIVERSITAS MUHAMMADIYAH YOGYAKARTA",
+    "location": "Yogyakarta, ID",
+    "degree": "Bachelor of Information Technology (GPA: 3.20/4.00)",
+    "graduation_date": "Present",
+    "coursework": "Web Programming, Data Structures, UX Design, Data Analytics"
+  },
+  "experience": [
+    {
+      "company": "TEnTI SPECTAWAVE",
+      "location": "Yogyakarta, ID",
+      "role": "Participant Liaison Coordinator",
+      "date": "Jan 2026",
+      "points": [
+        "Managed the end-to-end participation lifecycle for competitive teams, serving as the primary technical point of contact regarding design specifications.",
+        "Ensured 100% data integrity and administrative accuracy for all submissions, effectively bridging the communication gap between participants and the judging panel.",
+        "Facilitated technical meetings and real-time troubleshooting, ensuring a seamless operational flow during the competition period."
+      ]
+    }
+  ],
+  "projects": [
+    {
+  "title": "StudyChat PromptPace — Behavioral Classification & Analysis",
+  "location": "Metodologi Penelitian Project",
+  "tech": "Python, Pandas, Matplotlib, JSONL",
+  "date": "Jun 2026",
+  "bullets": [
+    "Classified 16,851 student chatbot prompts into Answer-First and Explain-First categories using keyword-based rules to analyze help-seeking behavior.",
+    "Designed a simple blocking/pivot simulation system that detects answer-seeking prompts and suggests users rephrase for conceptual understanding.",
+    "Computed basic metrics (AFR, BE, EFAR) to measure the potential effect of the intervention, though actual user testing was not conducted.",
+    "Built a Python script to automate data processing and generate CSV reports and charts for academic documentation."
+  ]
+},
+    {
+      "title": "BAPAK BAKERY E-CATALOG & INTEGRATED CMS",
+      "location": "Full Stack Development",
+      "tech": "Laravel, FilamentPHP, React.js, MySQL",
+      "date": "Dec 2025",
+      "bullets": [
+        "Architected a decoupled E-Catalog system using React.js for the frontend interface and FilamentPHP (Laravel) as the headless CMS backend.",
+        "Engineered RESTful API endpoints to synchronize real-time product inventory, pricing updates, and category management between the CMS and the client-side catalog.",
+        "Optimized database queries and asset delivery to ensure high-performance rendering of product catalogs across various devices."
+      ]
+    },
+    {
+  "title": "CSBD Classification using EEG — Logistic Regression Pipeline",
+  "location": "Machine Learning & Signal Processing",
+  "tech": "Python, Scikit-learn, Pandas, NumPy, Matplotlib, Seaborn, JSON",
+  "date": "Dec 2025",
+  "bullets": [
+    "Built a Logistic Regression model to detect Compulsive Sexual Behavior Disorder from EEG data (AUC 0.842, Accuracy 76%) using ANOVA feature selection and 80K-fold validation.",
+    "Automated end-to-end reporting pipeline exporting JSON metrics, ROC curves, and stability plots."
+  ]
+},
+    {
+      "title": "LAPOR VISUAL | UX RESEARCH & SOLUTION",
+      "location": "SisfoFest 2025",
+      "tech": "Figma, User Journey Mapping, Data Viz",
+      "date": "Nov 2025",
+      "bullets": [
+        "Presented an evidence-based design proposal at SisfoFest 2025, centered on optimizing civic interaction within smart city ecosystems.",
+        "Leveraged deep UX research methodologies to solve complex urban reporting challenges, transforming raw citizen data into actionable visual insights.",
+        "Designed high-fidelity prototypes that streamline the reporting process, significantly reducing user friction and enhancing data clarity for municipal stakeholders."
+      ]
+    }
+  ],
+  "skills": {
+    "languages": "JavaScript (ES6+), PHP, Python, SQL, HTML5, CSS3",
+    "tools": "React.js, Laravel, FilamentPHP, Node.js, Docker, Nginx, Git, GitHub, Pandas, Matplotlib"
+  },
+  "certificates": [
+    {
+      "name": "Cloud and Gen AI Foundations on AWS",
+      "issuer": "Dicoding Indonesia",
+      "date": "Valid until May 2028"
+    },
+    {
+      "name": "Foundation of Artificial intelligence",
+      "issuer": "Dicoding Indonesia",
+      "date": "Valid until June 2028"
+    },
+    {
+      "name": "Back-End beginner with JavaScript",
+      "issuer": "Dicoding Indonesia",
+      "date": "Valid until February 2028"
+    }
+  ]
+}

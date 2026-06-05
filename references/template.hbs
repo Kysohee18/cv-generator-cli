@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 11pt;
+            line-height: 1.15;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            font-size: 24pt;
+            /* Larger for Name */
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contact-info {
+            margin-top: 4px;
+        }
+
+        .contact-info span {
+            display: inline-block;
+        }
+
+        .contact-separator {
+            margin: 0 4px;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 1em;
+        }
+
+        h2 {
+            font-size: 11pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+            margin: 0 0 0.5em 0;
+            padding-bottom: 2px;
+            text-align: left;
+        }
+
+        /* Entries */
+        .entry {
+            margin-bottom: 0.5em;
+        }
+
+        .entry-header-line-1,
+        .entry-header-line-2 {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .company-name {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .location {
+            text-align: right;
+        }
+
+        .job-title {
+            font-style: italic;
+        }
+
+        .date {
+            text-align: right;
+        }
+
+        /* Lists */
+        ul {
+            margin: 0;
+            padding-left: 1.2em;
+            /* Tight indentation */
+        }
+
+        li {
+            margin-bottom: 0;
+            /* Tight line height for bullets */
+        }
+
+        /* Skills Section formatting */
+        .skills-entry p {
+            margin: 0;
+        }
+
+        .skill-category {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>{{header.name}}</h1>
+        <div class="contact-info">
+            <span>{{header.contact.location}}</span>
+            <span class="contact-separator">•</span>
+            <span>{{header.contact.phone}}</span>
+            <span class="contact-separator">•</span>
+            <span><a href="mailto:{{header.contact.email}}"
+                    style="color: inherit; text-decoration: none;">{{header.contact.email}}</a></span>
+            <span class="contact-separator">•</span>
+            <span><a href="{{header.contact.linkedin.url}}"
+                    style="color: inherit; text-decoration: none;">{{header.contact.linkedin.label}}</a></span>
+            <span class="contact-separator">•</span>
+            <span><a href="{{header.contact.github.url}}"
+                    style="color: inherit; text-decoration: none;">{{header.contact.github.label}}</a></span>
+        </div>
+    </header>
+
+    {{#if education}}
+    <section>
+        <h2>Education</h2>
+        <div class="entry">
+            <div class="entry-header-line-1">
+                <span class="company-name">{{education.institution}}</span>
+                <span class="location">{{education.location}}</span>
+            </div>
+            <div class="entry-header-line-2">
+                <span class="job-title">{{education.degree}}</span>
+                <span class="date">{{education.graduation_date}}</span>
+            </div>
+            {{#if education.coursework}}
+            <div style="margin-top: 2px;">
+                <span style="font-style: italic;">Relevant Coursework: </span>{{education.coursework}}
+            </div>
+            {{/if}}
+        </div>
+    </section>
+    {{/if}}
+
+    {{#if experience}}
+    <section>
+        <h2>Professional Experience</h2>
+        {{#each experience}}
+        <div class="entry">
+            <div class="entry-header-line-1">
+                <span class="company-name">{{this.company}}</span>
+                <span class="location">{{this.location}}</span>
+            </div>
+            <div class="entry-header-line-2">
+                <span class="job-title">{{this.role}}</span>
+                <span class="date">{{this.date}}</span>
+            </div>
+            <ul>
+                {{#each this.points}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/each}}
+    </section>
+    {{/if}}
+
+    {{#if projects}}
+    <section>
+        <h2>Projects</h2>
+        {{#each projects}}
+        <div class="entry">
+            <div class="entry-header-line-1">
+                <span class="company-name">{{this.title}}</span>
+                <span class="location">{{this.location}}</span>
+            </div>
+            <div class="entry-header-line-2">
+                <span class="job-title">{{this.tech}}</span>
+                <span class="date">{{this.date}}</span>
+            </div>
+            <ul>
+                {{#each this.bullets}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/each}}
+    </section>
+    {{/if}}
+
+    {{#if skills}}
+    <section>
+        <h2>Technical Skills</h2>
+        <div class="skills-entry">
+            <p><span class="skill-category">Languages:</span> {{skills.languages}}</p>
+            <p><span class="skill-category">Frameworks & Tools:</span> {{skills.tools}}</p>
+        </div>
+    </section>
+    {{/if}}
+
+    {{#if certificates}}
+    <section>
+        <h2>Certificates</h2>
+        {{#each certificates}}
+        <div class="entry">
+            <div class="entry-header-line-1">
+                <span class="company-name">{{this.name}}</span>
+                <span class="location"></span>
+            </div>
+            <div class="entry-header-line-2">
+                <span class="job-title">{{this.issuer}}</span>
+                <span class="date">{{this.date}}</span>
+            </div>
+        </div>
+        {{/each}}
+    </section>
+    {{/if}}
+
+</body>
+
+</html>
