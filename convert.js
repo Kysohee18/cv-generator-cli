@@ -2,10 +2,32 @@ const puppeteer = require('puppeteer');
 const handlebars = require('handlebars');
 const fs = require('fs-extra');
 const path = require('path');
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+const askQuestion = (query) => {
+    return new Promise(resolve => rl.question(query, resolve));
+};
 
 (async () => {
     try {
         console.log('Starting CV Generation...');
+
+        console.log('\n--- Pilihan Versi CV ---');
+        console.log('1. Versi Lengkap (Standard)');
+        console.log('2. Versi Tanpa Pengalaman & Tanpa Nomor Telepon');
+        let choice = await askQuestion('Masukkan pilihan Anda (1 atau 2): ');
+        
+        while (choice !== '1' && choice !== '2') {
+            console.log('Pilihan tidak valid.');
+            choice = await askQuestion('Masukkan pilihan Anda (1 atau 2): ');
+        }
+        
+        rl.close();
 
         // Paths
         const inputPath = path.join(__dirname, 'input', 'data.json');
@@ -15,6 +37,15 @@ const path = require('path');
         // 1. Read Data and Template
         console.log('Reading input data and template...');
         const data = await fs.readJson(inputPath);
+        
+        if (choice === '2') {
+            console.log('Memodifikasi data: Menghapus Experience dan Nomor Telepon...');
+            delete data.experience;
+            if (data.header && data.header.contact) {
+                delete data.header.contact.phone;
+            }
+        }
+        
         const templateHtml = await fs.readFile(templatePath, 'utf-8');
 
         // 2. Compile HTML

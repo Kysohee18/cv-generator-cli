@@ -115,8 +115,10 @@
         <h1>{{header.name}}</h1>
         <div class="contact-info">
             <span>{{header.contact.location}}</span>
+            {{#if header.contact.phone}}
             <span class="contact-separator">•</span>
             <span>{{header.contact.phone}}</span>
+            {{/if}}
             <span class="contact-separator">•</span>
             <span><a href="mailto:{{header.contact.email}}"
                     style="color: inherit; text-decoration: none;">{{header.contact.email}}</a></span>
@@ -212,7 +214,13 @@
         {{#each certificates}}
         <div class="entry">
             <div class="entry-header-line-1">
-                <span class="company-name">{{this.name}}</span>
+                <span class="company-name">
+                    {{#if this.url}}
+                    <a href="{{this.url}}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">{{this.name}}</a>
+                    {{else}}
+                    {{this.name}}
+                    {{/if}}
+                </span>
                 <span class="location"></span>
             </div>
             <div class="entry-header-line-2">
