@@ -1,14 +1,19 @@
 {
   "name": "cv-generator",
   "version": "1.0.0",
-  "description": "Convert Resume JSON to PDF",
+  "description": "Convert resume JSON to PDF and extract PDF text to Markdown",
   "main": "convert.js",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "start": "node convert.js"
+    "start": "node convert.js",
+    "pdf:to-markdown": "node pdf-to-markdown.js"
   },
   "dependencies": {
     "fs-extra": "^11.1.0",
     "handlebars": "^4.7.7",
+    "pdfjs-dist": "4.10.38",
     "puppeteer": "^21.0.0"
   }
 }

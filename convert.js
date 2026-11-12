@@ -13,7 +13,17 @@ const askQuestion = (query) => {
     return new Promise(resolve => rl.question(query, resolve));
 };
 
+const validateResumeData = (data) => {
+    if (!data || typeof data !== 'object' || Array.isArray(data)) {
+        throw new Error('Input must contain a JSON object.');
+    }
+    if (!data.header || typeof data.header.name !== 'string' || !data.header.name.trim()) {
+        throw new Error('Missing required field: header.name');
+    }
+};
+
 (async () => {
+    let browser;
     try {
         console.log('Starting CV Generation...');
 
@@ -37,6 +47,7 @@ const askQuestion = (query) => {
         // 1. Read Data and Template
         console.log('Reading input data and template...');
         const data = await fs.readJson(inputPath);
+        validateResumeData(data);
         
         if (choice === '2') {
             console.log('Memodifikasi data: Menghapus Experience dan Nomor Telepon...');
@@ -58,7 +69,7 @@ const askQuestion = (query) => {
 
         // 3. Render PDF
         console.log('Launching browser for PDF rendering...');
-        const browser = await puppeteer.launch({
+        browser = await puppeteer.launch({
             headless: "new"
         });
         const page = await browser.newPage();
@@ -80,11 +91,20 @@ const askQuestion = (query) => {
             }
         });
 
-        await browser.close();
-
         console.log(`Success! Resume generated at: ${outputPath}`);
 
     } catch (error) {
         console.error('Error generating CV:', error);
+        process.exitCode = 1;
+    } finally {
+        rl.close();
+        if (browser) {
+            try {
+                await browser.close();
+            } catch (error) {
+                console.error('Error closing browser:', error);
+                process.exitCode = 1;
+            }
+        }
     }
 })();

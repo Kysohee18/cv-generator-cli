@@ -66,24 +66,37 @@
         .entry-header-line-2 {
             display: flex;
             justify-content: space-between;
+            gap: 12px;
             width: 100%;
         }
 
         .company-name {
             font-weight: bold;
             text-transform: uppercase;
+            flex: 1 1 auto;
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
 
         .location {
             text-align: right;
+            flex: 0 1 auto;
+            max-width: 38%;
+            overflow-wrap: anywhere;
         }
 
         .job-title {
             font-style: italic;
+            flex: 1 1 auto;
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
 
         .date {
             text-align: right;
+            flex: 0 1 auto;
+            max-width: 38%;
+            overflow-wrap: anywhere;
         }
 
         /* Lists */
